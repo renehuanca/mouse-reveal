@@ -1,0 +1,118 @@
+---
+import CopyButton from "../components/CopyButton.astro";
+import background from "../assets/background.svg";
+---
+
+<div id="container">
+	<img id="background" src={background.src} alt="" fetchpriority="high" />
+	<main>
+		<section id="hero">
+			<div class="mx-auto px-2 max-w-3xl py-32 lg:py-36">
+				<div class="mb-8 flex">
+					<div
+						class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20"
+					>
+						<a href="#" class="font-semibold text-indigo-600">
+							<span class="absolute inset-0" aria-hidden="true"
+							></span>
+							Read the Docs
+							<span aria-hidden="true">&rarr;</span></a
+						>
+					</div>
+				</div>
+				<div class="">
+					<div class="flex flex-col-reverse sm:flex-row border-2 border-gray-500">
+						<h1
+							class="text-8xl font-anton font-semibold text-balance uppercase text-primary sm:text-9xl"
+						>
+							Mouse <span class="text-8xl">Reveal</span>
+						</h1>
+						<img
+							src="/images/gift.png"
+							alt="Gift"
+							class="hidden sm:flex aspect-square w-[240px] h-[240px]"
+						/>
+					</div>
+
+					<p
+						class="mt-8 text-lg text-balance font-medium text-gray-500 sm:text-xl/8"
+					>
+						Lightweight JavaScript library for creating dynamic
+						masking effects based on mouse movement.
+					</p>
+					<div class="mt-10 flex gap-x-6">
+						<code
+							data-code-block=""
+							class="px-4 py-2 bg-astro-dark-900/55 rounded-xl"
+						>
+							<div class="group h-full flex items-center">
+								<svg
+									width="22"
+									height="13"
+									viewBox="0 0 22 13"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+									class="mr-2 relative block w-3 -rotate-90 text-astro-gray-200"
+									aria-hidden="true"
+									><path
+										d="M1 1L11 11L21 1"
+										stroke="currentColor"
+										stroke-width="2"></path></svg
+								>
+								<div
+									data-code=""
+									class="flex-1 font-mono font-light text-sm text-astro-gray-200 mr-2"
+								>
+									npm install mouse-reveal
+								</div>
+								<div class="relative">
+									<CopyButton />
+								</div>
+							</div>
+						</code>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+</div>
+
+<style>
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		filter: blur(100px);
+	}
+	pre {
+		font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
+			Consolas, "DejaVu Sans Mono", monospace;
+		font-weight: normal;
+		background: linear-gradient(14deg, #d83333 0%, #f041ff 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		margin: 0;
+	}
+
+	code {
+		display: inline-block;
+		background:
+			linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
+			linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%)
+				border-box;
+		border-radius: 8px;
+		border: 1px solid transparent;
+		padding: 6px 8px;
+	}
+
+	.box {
+		padding: 16px;
+		background: rgba(255, 255, 255, 1);
+		border-radius: 16px;
+		border: 1px solid white;
+	}
+</style>

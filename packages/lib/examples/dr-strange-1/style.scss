@@ -1,0 +1,79 @@
+@use "sass:math";
+
+$points: 80;
+$rad: 100;
+$centerx: 150;
+$centery: 150;
+
+:root {
+    --points: #{$points};
+}
+
+@function angle-rad($pos, $angle) {
+    @return calc(($pos - 1) * math.$pi * $angle / 180);
+}
+
+@function circleCoords($rad, $pos, $angle, $coord) {
+    @if $coord =="x" {
+        @return $centerx +$rad * math.cos(angle-rad($pos - 1, $angle));
+    }
+
+    @return $centerx +$rad * math.sin(angle-rad($pos - 1, $angle));
+}
+
+@mixin circle-anim($selector, $sparkAngle) {
+    $amount: random(18) + 5;
+
+    @for $i from 1 through $points {
+        $angle: calc(360 / $points);
+        $x: circleCoords($rad, $i, $angle, "x");
+        $y: circleCoords($rad, $i, $angle, "y");
+        $val: random(10) / 40;
+        $time: calc($val * 100 / 100);
+        $anim: init-portal-anim-#{$i} $time * 3s $time * 3s 1 forwards linear;
+
+        #{$selector}:nth-of-type(#{$i}) {
+            offset-path: circle($rad + px at 150px 150px);
+            offset-distance: 0;
+            opacity: 0;
+            d: path("M 0 0 L" + (random(20) + 25) + " 1");
+            transform: rotate(#{random(3) + $sparkAngle}deg) translate(#{$x}px, #{$y}px);
+            transform-origin: #{$x}px #{$y}px;
+            filter: blur(0px);
+            animation: $anim;
+
+            $index: str-index($selector, "wheel2");
+
+            @if $index {
+                d: path("M 0 0 L" + (random(20) + 65) + " 1");
+                stroke-dashoffset: 50;
+                stroke-dasharray: random(10) + 8 5 4;
+                stroke-width: 0.5;
+                animation: $anim, particleAnim $time + s $time+s infinite none linear;
+            }
+
+            $index: str-index($selector, "wheel3");
+            $cdX: circleCoords($rad*1.4, $i, $angle, "x");
+            $cdY: circleCoords($rad*1.4, $i, $angle, "y");
+
+            @if $index {
+                d: path("M 0 0 L " + random(10) + " 1");
+                offset-distance: 0%;
+                stroke-dasharray: none;
+                stroke-width: 1.5;
+                offset-path: path("M " + $x + " " + $y + " L " + $cdX + " " + $cdY);
+                opacity: 0;
+                animation: leave-path-#{$i} calc($val/100)+s calc($val/10)+s infinite none linear;
+            }
+
+            $index: str-index($selector, "wheel4");
+
+            @if $index {
+                stroke-dasharray: none;
+                stroke-width: 0.5;
+            }
+
+            faltas
+        }
+    }
+}

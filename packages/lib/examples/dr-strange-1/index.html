@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="main">
+        <div id="portal">
+            <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+
+                <defs>
+                    <linearGradient id="spark-gradient">
+                        <stop offset="0%" stop-color="var(--color-start)"></stop>
+                        <stop offset="20%" stop-color="var(--color-middle)"></stop>
+                        <stop offset="50%" stop-color="var(--color-middle)"></stop>
+                        <stop offset="70%" stop-color="var(--color-middle)"></stop>
+                        <stop offset="100%" stop-color="var(--color-end)"></stop>
+                    </linearGradient>
+
+                    <linearGradient id="particle">
+                        <stop offset="50%" stop-color="var(--color-start)"></stop>
+                        <stop offset="75%" stop-color="var(--color-middle)"></stop>
+                        <stop offset="100%" stop-color="var(--color-end)"></stop>
+                    </linearGradient>
+
+                    <mask id="myMask">
+                        <circle cx="150" cy="150" r="100" fill="white"></circle>
+                    </mask>
+                </defs>
+                <image href="portal-world.jpg" height="250" width="375"
+                    style="x: calc(50% - 187.5px); y: calc(50% - 125px);" mask="url(#myMask)" />
+
+                <g id="wheel1">
+                    <path class="particle" stroke="url(#spark-gradient)" stroke-width="0.5"></path>
+                </g>
+
+                <g id="wheel2">
+                    <path class="particle" stroke="url(#spark-gradient)"></path>
+                </g>
+
+                <g id="wheel3">
+                    <path class="particle" stroke="url(#particle)"></path>
+                </g>
+
+                <g id="wheel4">
+                    <path class="particle" stroke="url(#spark-gradient)"></path>
+                </g>
+
+                <g id="wheel5">
+                    <path class="particle" stroke="rgba(230, 100, 0, 0.3)"></path>
+                </g>
+
+            </svg>
+        </div>
+    </div>
+
+    <script type="module">
+        const points = getComputedStyle(document.body)
+            .getPropertyValue("--points");
+        const group = document.querySelectorAll("g");
+
+        for (let item of group) {
+            let particle = item.querySelector('.particle')
+            for (let i = 0; i < points; i++) {
+                item.appendChild(particle.cloneNode(true))
+            }
+        }
+    </script>
+</body>
+
+</html>

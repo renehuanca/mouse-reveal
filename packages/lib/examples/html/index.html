@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse-reveal - Example html</title>
+    <link rel="stylesheet" href="../../dist/style.min.css">
+    <style>
+        .mask-effect {
+            font-size: 5em;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #FFF;
+        }
+
+        .text {
+            font-size: 5em;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mask">
+        <h1 class="mask-effect">IS GOOD!</h1>
+    </div>
+
+    <main>
+        <h1 class="text">mouse-revealJS</h1>
+        <!-- Your content here -->
+    </main>
+
+    <script src="../../dist/index.js" type="module"></script>
+    <script>
+        new MouseReveal('#mask');
+    </script>
+</body>
+
+</html>

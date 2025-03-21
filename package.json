@@ -1,0 +1,23 @@
+{
+  "name": "mouse-reveal",
+  "description": "Lightweight JavaScript library for creating dynamic masking effects based on mouse movement.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:docs": "npm run dev --prefix packages/docs",
+    "dev:lib": "npm run dev --prefix packages/lib"
+  },
+  "keywords": [
+    "mask",
+    "effect",
+    "animation",
+    "javascript",
+    "CSS",
+    "SVG"
+  ],
+  "author": "pixelgrub",
+  "license": "MIT"
+}

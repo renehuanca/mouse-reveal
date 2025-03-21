@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Anton';
+  src: url('/fonts/Anton-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #571731;
+  --color-secondary: #FC515B;
+  --color-tertiary: #FFF3F3;
+
+  --font-anton: 'Anton', sans-serif;
+}
