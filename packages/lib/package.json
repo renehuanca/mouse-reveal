@@ -3,17 +3,19 @@
   "version": "1.0.0",
   "description": "Lightweight JavaScript library for creating dynamic masking effects based on mouse movement.",
   "type": "module",
-  "main": "dist/mouse-reveal.min.js",
-  "module": "dist/mouse-reveal.esm.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "exports": {
-    "import": "./dist/mouse-reveal.esm.js",
-    "require": "./dist/mouse-reveal.cjs.js"
+    "import": "./dist/index.esm.js",
+    "require": "./dist/index.cjs.js"
   },
   "scripts": {
-    "lint": "ts-standard --fix",
-    "compile": "tsc",
+    "dev": "rollup -c --watch",
     "build": "rollup -c",
-    "watch": "rollup -c --watch"
+    "lint": "ts-standard",
+    "lint:fix": "ts-standard --fix",
+    "compile": "tsc"
   },
   "keywords": [
     "mask",
@@ -26,12 +28,14 @@
   "author": "René Huanca",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.23.0",
     "@rollup/plugin-commonjs": "^28.0.2",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^12.1.2",
     "@types/node": "^22.13.5",
     "cssnano": "^7.0.6",
+    "globals": "^16.0.0",
     "postcss": "^8.5.3",
     "rollup": "^4.34.8",
     "rollup-plugin-copy": "^3.5.0",

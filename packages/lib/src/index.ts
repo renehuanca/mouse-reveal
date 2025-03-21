@@ -5,7 +5,7 @@ interface MouseRevealConfig {
   minSize?: number
 }
 
-const MouseReveal_CONFIG: MouseRevealConfig = {
+const MOUSE_REVEAL_CONFIG: MouseRevealConfig = {
   maxSize: 320,
   minSize: 32
 }
@@ -14,14 +14,16 @@ class MouseReveal {
   private readonly mask: HTMLElement | null
   private baseX: number
   private baseY: number
-  private readonly maxSize: number
-  private readonly minSize: number
+  private readonly maxSize?: number
+  private readonly minSize?: number
 
   constructor (element: string, config: MouseRevealConfig = {}) {
     this.mask = document.querySelector<HTMLElement>(element)
 
     if (!this.mask) {
       console.error('Mask element not found for the provided selector: ', element)
+
+      return 
     }
 
     this.mask.style.height = `${Math.max(
@@ -31,8 +33,8 @@ class MouseReveal {
 
     this.baseX = 0
     this.baseY = 0
-    this.maxSize = config.maxSize ?? MouseReveal_CONFIG.maxSize
-    this.minSize = config.minSize ?? MouseReveal_CONFIG.minSize
+    this.maxSize = config.maxSize ?? MOUSE_REVEAL_CONFIG.maxSize
+    this.minSize = config.minSize ?? MOUSE_REVEAL_CONFIG.minSize
 
     this.setupListeners()
   }
@@ -49,8 +51,8 @@ class MouseReveal {
     })
 
     document.querySelectorAll('.mask-effect').forEach((element: HTMLElement) => {
-      element.addEventListener('mouseenter', () => this.animateMaskSize(this.minSize, this.maxSize))
-      element.addEventListener('mouseleave', () => this.animateMaskSize(this.maxSize, this.minSize))
+      element.addEventListener('mouseenter', () => this.animateMaskSize(this.minSize ?? MOUSE_REVEAL_CONFIG.minSize!, this.maxSize ?? MOUSE_REVEAL_CONFIG.maxSize!))
+      element.addEventListener('mouseleave', () => this.animateMaskSize(this.maxSize ?? MOUSE_REVEAL_CONFIG.maxSize!, this.minSize ?? MOUSE_REVEAL_CONFIG.minSize!))
     })
   }
 

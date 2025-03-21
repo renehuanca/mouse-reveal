@@ -11,17 +11,17 @@ export default {
 
   output: [
     {
-      file: 'dist/mouse-reveal.cjs.js',
+      file: 'dist/index.cjs.js',
       format: 'cjs',
       plugins: [terser()]
     },
     {
-      file: 'dist/mouse-reveal.esm.js',
+      file: 'dist/index.esm.js',
       format: 'esm',
       plugins: [terser()]
     },
     {
-      file: 'dist/mouse-reveal.min.js',
+      file: 'dist/index.umd.js',
       format: 'umd',
       name: 'mouse-reveal',
       plugins: [terser()]
