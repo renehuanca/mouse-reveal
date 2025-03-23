@@ -19,6 +19,7 @@ class MouseReveal {
 
   constructor (element: string, config: MouseRevealConfig = {}) {
     this.mask = document.querySelector<HTMLElement>(element)
+    console.log("hola")
 
     if (!this.mask) {
       console.error('Mask element not found for the provided selector: ', element)
@@ -40,7 +41,7 @@ class MouseReveal {
   }
 
   private setupListeners (): void {
-    window.addEventListener('mousemove', (e: MouseEvent) => {
+    this.mask?.addEventListener('mousemove', (e: MouseEvent) => {
       this.baseX = e.clientX
       this.baseY = e.clientY
       this.updateMaskPosition()

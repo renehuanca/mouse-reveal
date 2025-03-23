@@ -1,13 +1,13 @@
 import terser from '@rollup/plugin-terser'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import typescript from '@rollup/plugin-typescript'
-import postcss from 'rollup-plugin-postcss'
-import cssnano from 'cssnano'
-import copy from 'rollup-plugin-copy'
+// import typescript from '@rollup/plugin-typescript'
+// import postcss from 'rollup-plugin-postcss'
+// import cssnano from 'cssnano'
+// import copy from 'rollup-plugin-copy'
 
 export default {
-  input: 'src/index.ts',
+  input: 'src/index.js',
 
   output: [
     {
@@ -31,18 +31,18 @@ export default {
   plugins: [
     resolve(),
     commonjs(),
-    typescript({
-      tsconfig: './tsconfig.json'
-    }),
-    postcss({
-      extract: 'style.min.css',
-      plugins: [cssnano()]
-    }),
-    copy({
-      targets: [
-        { src: 'src/assets/*.svg', dest: 'dist/assets' }
-      ]
-    })
+    // typescript({
+    //   tsconfig: './tsconfig.json'
+    // }),
+    // postcss({
+    //   extract: 'style.min.css',
+    //   plugins: [cssnano()]
+    // }),
+    // copy({
+    //   targets: [
+    //     { src: 'src/assets/*.svg', dest: 'dist/assets' }
+    //   ]
+    // })
   ],
 
   external: []
