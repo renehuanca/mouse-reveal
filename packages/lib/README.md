@@ -2,10 +2,12 @@
 
 Lightweight JavaScript library for creating dynamic **masking effects** based on mouse movement.
 
+![GIF de Mouse Reveal](src/assets/mouse-reveal.gif)
+
 ## 🌟 Features
 
-- Easy-to-use API.
-- Customizable mask size, color, and strength.
+- Easy-to-use.
+- Customizable maxSize.
 - Lightweight and fast.
 - Works in modern browsers with CSS.
 - No dependencies.
@@ -15,14 +17,15 @@ Lightweight JavaScript library for creating dynamic **masking effects** based on
 To use mouse-reveal, simply create an instance of the `mouse-reveal` class and pass the target element and optional settings.
 
 ```html
-<div class="mask-container" id="mask">
-  <h1>Welcome to mouse-reveal!</h1>
+<div id="mask">
+  <!-- back -->
+  <div>back</div>
+  <!-- front -->
+  <div>front</div>
 </div>
 
-<script src="mouse-reveal.js"></script>
 <script>
-  // Create a new mouse-reveal instance
-  const mask = new mouse-reveal("#mask", { color: "black", size: "20%" });
+  new MouseReveal("#mask");
 </script>
 ```
 
@@ -30,15 +33,7 @@ To use mouse-reveal, simply create an instance of the `mouse-reveal` class and p
 
 You can use mouse-reveal in your project either by downloading the files or installing via npm.
 
-### Option 1: Download the File
-
-1. Go to the [GitHub repository](https://github.com/renehuanca/mouse-reveal).
-2. Download `mouse-reveal.js`.
-3. Include them in your HTML file:
-
-```html
-  <script src="mouse-reveal.js"></script>
-```
+### Option 1: CDN
 
 ### Option 2: Install via npm
 
@@ -53,36 +48,30 @@ npm install mouse-reveal
 You can customize the following options when initializing the mouse-reveal instance:
 
 - **`color`**: The color of the mask (default: `black`).
-- **`size`**: The size of the mask (default: `15%`).
-- **`strength`**: The strength of the mask's gradient effect (default: `50`).
-- **`fallbackColor`**: The color used when the browser doesn't support masking (default: `red`).
+- **`maxSize`**: The size of the mask (default: `240px`).
 
 #### Example with Custom Options:
 
 ```js
-const mask = new mouse-reveal("#mask", { color: "black", size: "25%", strength: 60 });
+	new MouseReveal("#mask", {
+		maxSize: 240,
+		minSize: 0,
+		background: "#fce7f3",
+	});
 ```
 
 ## 🛠️ Methods
 
-### `destroy()`
-
-If you no longer need the mask effect, you can destroy it with the `destroy()` method. This will remove the mouse event listener and stop the effect.
-
-```js
-mask.destroy();
-```
+----
 
 ## 🌍 Browser Support
 
-mouse-reveal works in modern browsers, including:
+mouse-reveal works in modern browsers
 
 - Chrome
 - Firefox
 - Safari
 - Edge
-
-Browsers that support CSS `mask` and `radial-gradient` should work without issues.
 
 ## 💡 Contributing
 

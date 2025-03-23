@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "dev:docs": "npm run dev --prefix packages/docs",
-    "dev:lib": "npm run dev --prefix packages/lib"
+    "dev:lib": "npm run dev --prefix packages/lib",
+    "build:lib": "npm run build --prefix packages/lib"
   },
   "keywords": [
     "mask",
