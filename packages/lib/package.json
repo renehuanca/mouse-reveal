@@ -1,6 +1,6 @@
 {
   "name": "mouse-reveal",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Lightweight JavaScript library for creating dynamic masking effects based on mouse movement.",
   "type": "module",
   "main": "dist/index.cjs.js",
@@ -27,6 +27,18 @@
   ],
   "author": "René Huanca",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/renehuanca/mouse-reveal.git"
+  },
+  "contributors": [
+    {
+      "name": "Rene Huanca",
+      "email": "renehuanca32@gmail.com",
+      "url": "https://github.com/renehuanca"
+    }
+  ],
+  "homepage": "https://renehuanca.github.io/mouse-reveal",
   "devDependencies": {
     "@eslint/js": "^9.23.0",
     "@rollup/plugin-commonjs": "^28.0.2",
