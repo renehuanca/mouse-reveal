@@ -2,7 +2,7 @@
 
 Lightweight JavaScript library for creating dynamic **masking effects** based on mouse movement.
 
-![GIF de Mouse Reveal](src/assets/mouse-reveal.gif)
+![GIF de Mouse Reveal](https://github.com/pixelgrub/mouse-reveal/blob/bac32fe24463a9c57eb40197840f244b6e87666a/packages/lib/src/assets/mouse-reveal.gif)
 
 ## 🌟 Features
 
