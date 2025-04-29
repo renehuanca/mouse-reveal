@@ -2,37 +2,40 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]   # Desplegar cuando haya un push a la rama 'main'
-  workflow_dispatch:      # Permite ejecución manual desde GitHub
+    branches: [ main ]
+  workflow_dispatch:
 
 permissions:
-  contents: read         # Leer el contenido del repositorio
-  pages: write           # Permitir escribir en GitHub Pages
-  id-token: write        # Permite la generación de tokens
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies and build the site
-        run: |
-          # Primero instala las dependencias en la raíz del monorepo
-          npm install  # Cambia a pnpm install o yarn si usas esos gestores
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
 
-          # Luego ve a la carpeta de Astro para construir el proyecto
-          cd packages/docs
+      - name: Install dependencies
+        run: npm install
 
-          npm run build  # Cambia según tu script de build, si usas otro gestor de paquetes
+      - name: Build library
+        run: npm run build:lib
 
-      - name: Build and upload your site with Astro
+      - name: Build and upload Astro site
         uses: withastro/action@v3
         with:
-          path: packages/docs  # Ruta a tu proyecto Astro
-          node-version: 20      # Especifica la versión de Node que se usará
-          package-manager: npm  # Usa 'pnpm' o 'yarn' si usas otro gestor
+          path: packages/docs
+          node-version: 20
+          package-manager: npm
 
   deploy:
     needs: build
@@ -40,7 +43,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
