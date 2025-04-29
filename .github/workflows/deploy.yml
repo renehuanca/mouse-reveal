@@ -1,18 +1,14 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Activa el flujo de trabajo cada vez que hagas push a la rama `main`
-  # Usando un nombre de rama diferente? Reemplaza `main` con el nombre de tu rama
   push:
-    branches: [ main ]
-  # Te permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones en GitHub.
-  workflow_dispatch:
+    branches: [ main ]   # Desplegar cuando haya un push a la rama 'main'
+  workflow_dispatch:      # Permite ejecución manual desde GitHub
 
-# Permite que este trabajo clone el repositorio y cree un despliegue de página
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read         # Leer el contenido del repositorio
+  pages: write           # Permitir escribir en GitHub Pages
+  id-token: write        # Permite la generación de tokens
 
 jobs:
   build:
@@ -20,12 +16,23 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
+
+      - name: Install dependencies and build the site
+        run: |
+          # Primero instala las dependencias en la raíz del monorepo
+          npm install  # Cambia a pnpm install o yarn si usas esos gestores
+
+          # Luego ve a la carpeta de Astro para construir el proyecto
+          cd packages/docs
+
+          npm run build  # Cambia según tu script de build, si usas otro gestor de paquetes
+
+      - name: Build and upload your site with Astro
         uses: withastro/action@v3
-        # with:
-          # path: . # La ubicación raíz de tu proyecto de Astro dentro del repositorio. (opcional)
-          # node-version: 20 # La versión específica de Node que debería usarse para construir tu sitio. Por defecto es 20. (opcional)
-          # package-manager: pnpm@latest # El gestor de paquetes de Node que debería usarse para instalar dependencias y construir tu sitio. Detectado automáticamente basado en tu lockfile. (opcional)
+        with:
+          path: packages/docs  # Ruta a tu proyecto Astro
+          node-version: 20      # Especifica la versión de Node que se usará
+          package-manager: npm  # Usa 'pnpm' o 'yarn' si usas otro gestor
 
   deploy:
     needs: build
