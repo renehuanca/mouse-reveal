@@ -89,6 +89,6 @@ We welcome contributions! If you'd like to contribute, feel free to fork the rep
 
 mouse-reveal is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-**mouse-reveal** is built with 💙 and is designed to make adding dynamic mask effects super easy and fun!
+**mouse-reveal** is built with 💙 and is designed to make adding dynamic mask effects super easy and fun!. Atte Rene XD
 
 
